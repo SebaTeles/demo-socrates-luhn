@@ -1,36 +1,46 @@
 Demo Luhn · Socrates · Curso IA PublicSoft
 ==========================================
 
-Como abrir na aula (ao vivo)
-----------------------------
-1. Abra a pasta no Desktop:
+Link online (alunos / projetor)
+-------------------------------
+https://sebateles.github.io/demo-socrates-luhn/
+
+Como abrir offline
+------------------
+1. Pasta no Desktop:
    C:\Users\Cliente\Desktop\demo-socrates-luhn\
 
-2. Dê duplo clique em:
-   index.html
+2. Duplo clique em index.html (funciona sem internet).
 
-3. Funciona sem internet (file://).
-
-4. Confira o selo no canto superior direito:
+3. Selo no canto superior direito:
    "✓ Luhn OK"  → self-test passou, pode demonstrar.
    "✗ Luhn ERRO" → algo quebrou; não use nesta sessão.
 
 Roteiro rápido da demo
 ----------------------
-1. Fale do Socrates (agente Grok Bot): pesquisa, monta app, entrega no Desktop.
-2. Escolha a bandeira (Visa / Mastercard / Amex / Discover).
-3. Clique em "Gerar cartão de teste".
+1. Fale do Socrates (agente Grok Bot): pesquisa, monta app, entrega.
+2. Mostre o aviso vermelho: NÃO cola no site da Grok / pagamento real.
+3. Escolha a bandeira e clique em "Gerar número de teste (só Luhn)".
 4. Mostre PAN, CVV, validade e nome no cartão visual.
-5. Clique em "Quebrar dígito" → validador vermelho (INVÁLIDO).
+5. "Quebrar dígito" → validador vermelho (INVÁLIDO).
 6. Gere de novo → verde (VÁLIDO).
-7. Chips Stripe: 4242…4242 = válido | 4242…4241 = inválido Luhn.
+7. Chips Stripe sandbox: 4242…4242 = válido Luhn | 4242…4241 = inválido.
 
-O que isto NÃO é
-----------------
-- Não são cartões reais.
-- Luhn = só checksum matemático (formato).
-- Autorização bancária = gateway/banco (sandbox Stripe etc.).
+O que isto NÃO é (fale isso na aula)
+------------------------------------
+- NÃO são cartões reais.
+- Luhn = só checksum matemático (o dígito "bate").
+- Passar no Luhn NÃO autoriza compra.
+- NÃO funciona no checkout da Grok, x.ai, Netflix, banco, loja etc.
+  Se alguém colar lá, o site responde "cartão não existe" — e isso é correto.
+- Autorização de verdade = gateway/banco (ex.: Stripe em modo teste).
 - Fraude ou uso indevido é ilegal.
+
+Frase pronta se alguém perguntar
+--------------------------------
+"Este número só prova que o algoritmo de Luhn está certo.
+Ele não existe no banco. Por isso o site da Grok recusa —
+a demo é do checksum, não do pagamento."
 
 Arquivos
 --------

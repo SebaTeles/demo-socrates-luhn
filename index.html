@@ -595,6 +595,38 @@
     .chip-btn .tag.ok { background: var(--ok-bg); color: var(--ok); }
     .chip-btn .tag.bad { background: var(--bad-bg); color: var(--bad); }
 
+    /* Alert: never use on real checkout */
+    .alert-banner {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      margin: 0 0 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 120, 80, 0.45);
+      background: linear-gradient(135deg, rgba(255, 90, 40, 0.18), rgba(204, 36, 204, 0.12));
+      color: #ffe8d6;
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+    .alert-banner .alert-ico {
+      flex: 0 0 auto;
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      display: grid; place-items: center;
+      background: rgba(255, 120, 80, 0.25);
+      font-size: 1.1rem;
+    }
+    .alert-banner strong { color: #ffd0a8; }
+    .alert-banner code {
+      font-family: ui-monospace, monospace;
+      font-size: 0.88em;
+      padding: 1px 6px;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.35);
+      color: #ffd7b0;
+    }
+
     /* Disclaimer / footer */
     .disclaimer {
       margin-top: 1.25rem;
@@ -704,12 +736,22 @@
       </ul>
     </section>
 
+    <aside class="alert-banner" role="alert">
+      <div class="alert-ico" aria-hidden="true">!</div>
+      <div>
+        <strong>Não cole estes números no Grok, x.ai, Netflix, banco ou qualquer site de pagamento.</strong>
+        Aqui só validamos o algoritmo de Luhn (checksum). Passar no Luhn <em>não</em> significa cartão real.
+        No checkout da Grok o banco responde “cartão não existe” — e isso é o esperado.
+        Use só nesta página (ou no sandbox Stripe em modo teste).
+      </div>
+    </aside>
+
     <section class="lab" aria-labelledby="lab-title">
       <div class="lab-head">
         <div>
           <h2 id="lab-title">
             Laboratório ao vivo
-            <button type="button" class="tip" data-tip="Gera números fictícios com dígito verificador Luhn. Não são cartões reais e não autorizam compra." aria-label="Ajuda sobre o laboratório">?</button>
+            <button type="button" class="tip" data-tip="Gera números fictícios com dígito verificador Luhn. Não cole no Grok/x.ai nem em checkout real: o banco vai dizer que o cartão não existe." aria-label="Ajuda sobre o laboratório">?</button>
           </h2>
           <p>Gere · valide · quebre o dígito · veja o checksum responder na hora.</p>
         </div>
@@ -725,7 +767,7 @@
             <option value="discover">Discover</option>
           </select>
         </div>
-        <button type="button" class="btn" id="btnGenerate">Gerar cartão de teste</button>
+        <button type="button" class="btn" id="btnGenerate">Gerar número de teste (só Luhn)</button>
         <span id="brand-hint" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">
           Escolha a bandeira e pressione Gerar.
         </span>
@@ -799,7 +841,7 @@
           Validar número
           <button type="button" class="tip" data-tip="Cole ou digite. A validação Luhn roda a cada tecla: verde = checksum OK, vermelho = falhou." aria-label="Ajuda sobre validação">?</button>
         </h3>
-        <p>Cole um PAN (com ou sem espaços). Resultado instantâneo — só checksum, sem banco.</p>
+        <p>Cole um PAN (com ou sem espaços). Resultado instantâneo — só checksum Luhn, sem banco e sem Grok.</p>
         <div class="validate-row">
           <input type="text" id="validateInput" inputmode="numeric" autocomplete="off" spellcheck="false"
                  placeholder="Ex.: 4242 4242 4242 4242" aria-describedby="validateResult" />
@@ -810,7 +852,7 @@
           <span id="validateText">Aguardando número…</span>
         </div>
         <div class="chips" aria-label="Atalhos Stripe">
-          <span class="label">Stripe</span>
+          <span class="label">Stripe sandbox</span>
           <button type="button" class="chip-btn" data-stripe="4242424242424242">
             4242…4242 <span class="tag ok">válido</span>
           </button>
@@ -823,8 +865,9 @@
 
     <aside class="disclaimer" role="note">
       <strong>Aviso educacional / QA:</strong>
-      estes números são fictícios e servem só para aula e testes locais.
-      Não são cartões reais. Usar dados de cartão alheio ou tentar fraude é ilegal.
+      estes números são fictícios e servem só para aula e testes locais (Luhn / sandbox).
+      Não são cartões reais e <strong>não funcionam</strong> no site da Grok, x.ai, lojas ou bancos.
+      Usar dados de cartão alheio ou tentar fraude é ilegal.
     </aside>
 
     <footer class="footer">
