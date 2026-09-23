@@ -1,0 +1,41 @@
+Demo Luhn · Socrates · Curso IA PublicSoft
+==========================================
+
+Como abrir na aula (ao vivo)
+----------------------------
+1. Abra a pasta no Desktop:
+   C:\Users\Cliente\Desktop\demo-socrates-luhn\
+
+2. Dê duplo clique em:
+   index.html
+
+3. Funciona sem internet (file://).
+
+4. Confira o selo no canto superior direito:
+   "✓ Luhn OK"  → self-test passou, pode demonstrar.
+   "✗ Luhn ERRO" → algo quebrou; não use nesta sessão.
+
+Roteiro rápido da demo
+----------------------
+1. Fale do Socrates (agente Grok Bot): pesquisa, monta app, entrega no Desktop.
+2. Escolha a bandeira (Visa / Mastercard / Amex / Discover).
+3. Clique em "Gerar cartão de teste".
+4. Mostre PAN, CVV, validade e nome no cartão visual.
+5. Clique em "Quebrar dígito" → validador vermelho (INVÁLIDO).
+6. Gere de novo → verde (VÁLIDO).
+7. Chips Stripe: 4242…4242 = válido | 4242…4241 = inválido Luhn.
+
+O que isto NÃO é
+----------------
+- Não são cartões reais.
+- Luhn = só checksum matemático (formato).
+- Autorização bancária = gateway/banco (sandbox Stripe etc.).
+- Fraude ou uso indevido é ilegal.
+
+Arquivos
+--------
+index.html                 — página completa (CSS+JS embutidos)
+assets/logo-publicsoft.png — logo da marca
+LEIA-ME.txt                — este arquivo
+
+Agente: Socrates · Grok Bot · PublicSoft
